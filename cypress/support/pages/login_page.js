@@ -73,6 +73,16 @@ class LoginPage {
     static shouldShowFooter() {
         BaseTest.shouldBeVisible(LoginPageElements.footer);
     }
+
+    // Checks if the alert error message exists
+    static shouldShowAlertErrorMessage(text) {
+        BaseTest.elementShouldContainText(LoginPageElements.alertErrorMessage, text);
+    }
+
+    // Checks if the alert error message is visible
+    static shouldShowAlertError() {
+        BaseTest.shouldBeVisible(LoginPageElements.alertErrorMessage);
+    }
 }
 
 export default LoginPage;
