@@ -4,12 +4,6 @@
  * Use these selectors with BaseTest methods in your test or page actions.
  */
 class LoginPageElements {
-  // Logo SVG
-  static logo = '.SignInForm-logo';
-
-  // Title
-  static title = 'h1.MuiTypography-h5';
-
   // Username field
   static usernameField = '[data-test="signin-username"] input[name="username"]';
   static usernameLabel = '[for="username"]';

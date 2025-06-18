@@ -61,6 +61,15 @@ class BaseTest {
   }
 
   /**
+   * Long clicks an element.
+   * @param {string} selector - CSS selector of the element.
+   * @param {number} [timeout=10000] - Optional timeout in ms.
+   */
+  static longClick(selector, timeout = 10000) {
+    cy.get(selector, { timeout }).click({ force: true, multiple: true, delay: 1000 });
+  }
+
+  /**
    * Types text into a field.
    * @param {string} selector - CSS selector of the field.
    * @param {string} text - Text to type.
