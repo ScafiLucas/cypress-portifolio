@@ -57,19 +57,9 @@ class SignUpPage {
         BaseTest.shouldBeVisible(SignUpPageElements.logo);
     }
 
-    // Checks if the title is correct
-    static shouldHaveTitle(text) {
-        BaseTest.elementShouldContainText(SignUpPageElements.pageTitle, text);
-    }
-
     // Checks if the page title is correct
     static shouldShowCorrectPageTitle() {
         BaseTest.elementShouldContainText(SignUpPageElements.pageTitle, SignUpPageElements.TEXTS.pageTitle);
-    }
-
-    // Checks if an error message exists
-    static shouldShowErrorMessage(text) {
-        BaseTest.elementShouldContainText(SignUpPageElements.errorMessage, text);
     }
 
     // Checks if the first name field is visible
@@ -110,16 +100,6 @@ class SignUpPage {
     // Checks if the footer is visible
     static shouldShowFooter() {
         BaseTest.shouldBeVisible(SignUpPageElements.footer);
-    }
-
-    // Checks if the alert error message exists
-    static shouldShowAlertErrorMessage(text) {
-        BaseTest.elementShouldContainText(SignUpPageElements.alertErrorMessage, text);
-    }
-
-    // Checks if the alert error message is visible
-    static shouldShowAlertError() {
-        BaseTest.shouldBeVisible(SignUpPageElements.alertErrorContainer);
     }
 
     // Checks for required field errors

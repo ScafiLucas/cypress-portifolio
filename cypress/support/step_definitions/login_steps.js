@@ -34,7 +34,7 @@ Then('I should see an error message for invalid credentials', () => {
   LoginPage.shouldShowInvalidCredentialsError();
 });
 
-Then('I should see a required field error for the username at signin in login screen', () => {
+Then('I should see a required field error for the username at signin', () => {
   LoginPage.shouldShowUsernameRequiredError();
 });
 

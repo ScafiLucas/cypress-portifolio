@@ -38,19 +38,14 @@ class SignUpPageElements {
   // Alert error message (Material-UI Alert component)
   static alertErrorMessage = '.MuiAlert-root .MuiAlert-message';
   static alertErrorContainer = '.MuiAlert-root.MuiAlert-standardError';
-  static alertErrorIcon = '.MuiAlert-icon';
 
   // "Have an account? Sign In" link
   static signInLink = 'a[href="/signin"]';
 
   // Footer (Built by Cypress)
   static footer = '.MuiBox-root .MuiTypography-alignCenter';
-  static footerCypressLogo = '.MuiBox-root .MuiTypography-alignCenter svg';
 
   // Main containers
-  static mainContainer = 'main.MuiContainer-root';
-  static paperContainer = '.SignUpForm-paper';
-  static form = '.SignUpForm-form';
   static logo = '.SignUpForm-logo';
   static pageTitle = '[data-test="signup-title"]';
 
