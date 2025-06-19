@@ -52,12 +52,53 @@ class BaseTest {
   // ===========================
 
   /**
+   * Gets an element by selector.
+   * @param {string} selector - CSS selector of the element.
+   * @param {number} [timeout=10000] - Optional timeout in ms.
+   * @returns {Cypress.Chainable} - Cypress chainable for the element.
+   */
+  static getElement(selector, timeout = 10000) {
+    return cy.get(selector, { timeout });
+  }
+
+  /**
+   * Gets an element by index.
+   * @param {string} selector - CSS selector of the element.
+   * @param {number} index - Index of the element (0-based).
+   * @param {number} [timeout=10000] - Optional timeout in ms.
+   * @returns {Cypress.Chainable} - Cypress chainable for the element.
+   */
+  static getElementAtIndex(selector, index, timeout = 10000) {
+    return cy.get(selector, { timeout }).eq(index);
+  }
+
+  /**
    * Clicks an element.
    * @param {string} selector - CSS selector of the element.
    * @param {number} [timeout=10000] - Optional timeout in ms.
    */
   static click(selector, timeout = 10000) {
     cy.get(selector, { timeout }).click();
+  }
+
+  /**
+   * Clicks an element by index.
+   * @param {string} selector - CSS selector of the element.
+   * @param {number} index - Index of the element (0-based).
+   * @param {number} [timeout=10000] - Optional timeout in ms.
+   */
+  static clickElementAtIndex(selector, index, timeout = 10000) {
+    cy.get(selector, { timeout }).eq(index).click();
+  }
+
+  /**
+   * Clicks an element containing specific text.
+   * @param {string} selector - CSS selector of the element.
+   * @param {string} text - Text to find and click.
+   * @param {number} [timeout=10000] - Optional timeout in ms.
+   */
+  static clickElementWithText(selector, text, timeout = 10000) {
+    cy.get(selector, { timeout }).contains(text).click();
   }
 
   /**
@@ -112,6 +153,15 @@ class BaseTest {
   }
 
   /**
+   * Asserts that an element is not visible.
+   * @param {string} selector - CSS selector of the element.
+   * @param {number} [timeout=10000] - Optional timeout in ms.
+   */
+  static shouldNotBeVisible(selector, timeout = 10000) {
+    cy.get(selector, { timeout }).should('not.be.visible');
+  }
+
+  /**
    * Asserts that a text is present on the page.
    * @param {string} text - Text to check.
    * @param {number} [timeout=10000] - Optional timeout in ms.
@@ -128,6 +178,73 @@ class BaseTest {
    */
   static elementShouldContainText(selector, text, timeout = 10000) {
     cy.get(selector, { timeout }).should('contain', text);
+  }
+
+  /**
+   * Asserts that elements have a specific length.
+   * @param {string} selector - CSS selector of the elements.
+   * @param {number} length - Expected length.
+   * @param {number} [timeout=10000] - Optional timeout in ms.
+   */
+  static shouldHaveLength(selector, length, timeout = 10000) {
+    cy.get(selector, { timeout }).should('have.length', length);
+  }
+
+  /**
+   * Asserts that an element exists.
+   * @param {string} selector - CSS selector of the element.
+   * @param {number} [timeout=10000] - Optional timeout in ms.
+   */
+  static shouldExist(selector, timeout = 10000) {
+    cy.get(selector, { timeout }).should('exist');
+  }
+
+  /**
+   * Asserts that an element does not exist.
+   * @param {string} selector - CSS selector of the element.
+   * @param {number} [timeout=10000] - Optional timeout in ms.
+   */
+  static shouldNotExist(selector, timeout = 10000) {
+    cy.get(selector, { timeout }).should('not.exist');
+  }
+
+  /**
+   * Asserts that an element is disabled.
+   * @param {string} selector - CSS selector of the element.
+   * @param {number} [timeout=10000] - Optional timeout in ms.
+   */
+  static shouldBeDisabled(selector, timeout = 10000) {
+    cy.get(selector, { timeout }).should('be.disabled');
+  }
+
+  /**
+   * Asserts that an element is enabled.
+   * @param {string} selector - CSS selector of the element.
+   * @param {number} [timeout=10000] - Optional timeout in ms.
+   */
+  static shouldBeEnabled(selector, timeout = 10000) {
+    cy.get(selector, { timeout }).should('be.enabled');
+  }
+
+  /**
+   * Gets an element by selector and returns a chainable.
+   * @param {string} selector - CSS selector of the element.
+   * @param {number} [timeout=10000] - Optional timeout in ms.
+   * @returns {Cypress.Chainable} - Cypress chainable for the element.
+   */
+  static getElementChainable(selector, timeout = 10000) {
+    return cy.get(selector, { timeout });
+  }
+
+  /**
+   * Gets an element by index and returns a chainable.
+   * @param {string} selector - CSS selector of the element.
+   * @param {number} index - Index of the element (0-based).
+   * @param {number} [timeout=10000] - Optional timeout in ms.
+   * @returns {Cypress.Chainable} - Cypress chainable for the element.
+   */
+  static getElementAtIndexChainable(selector, index, timeout = 10000) {
+    return cy.get(selector, { timeout }).eq(index);
   }
 
   // ===========================
@@ -151,6 +268,15 @@ class BaseTest {
     cy.get(selector, { timeout }).should('be.visible');
   }
 
+  /**
+   * Waits until an element is not visible.
+   * @param {string} selector - CSS selector of the element.
+   * @param {number} [timeout=10000] - Optional timeout in ms.
+   */
+  static waitForElementNotVisible(selector, timeout = 10000) {
+    cy.get(selector, { timeout }).should('not.exist');
+  }
+
   // ===========================
   // Utilities
   // ===========================
@@ -171,6 +297,37 @@ class BaseTest {
    */
   static executeCommand(command) {
     command();
+  }
+
+  // ===========================
+  // URL Assertions
+  // ===========================
+
+  /**
+   * Asserts that the current URL includes a specific path.
+   * @param {string} path - The path to check for in the URL.
+   * @param {number} [timeout=10000] - Optional timeout in ms.
+   */
+  static urlShouldInclude(path, timeout = 10000) {
+    cy.url({ timeout }).should('include', path);
+  }
+
+  /**
+   * Asserts that the current URL equals a specific URL.
+   * @param {string} url - The expected URL.
+   * @param {number} [timeout=10000] - Optional timeout in ms.
+   */
+  static urlShouldEqual(url, timeout = 10000) {
+    cy.url({ timeout }).should('eq', url);
+  }
+
+  /**
+   * Gets the current URL and returns a chainable for further assertions.
+   * @param {number} [timeout=10000] - Optional timeout in ms.
+   * @returns {Cypress.Chainable} - Cypress chainable for the URL.
+   */
+  static getCurrentUrl(timeout = 10000) {
+    return cy.url({ timeout });
   }
 }
 

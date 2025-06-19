@@ -1,4 +1,6 @@
 export const LOGIN_URL = '/login';
+export const SIGNUP_URL = '/signup';
+export const BASE_URL = Cypress.env('baseUrl') || 'http://localhost:3000';
 
 const users = {
     valid: {

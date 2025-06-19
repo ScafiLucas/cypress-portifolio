@@ -1,18 +1,12 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
 import LoginPage from '../pages/login_page';
+import HomePage from '../pages/home_page';
+import LoginPageElements from '../elements/login_page_elements';
 
 const getEnv = (key) => Cypress.env(key);
 
 Given('I am on the login page', () => {
   LoginPage.visit('/signin');
-});
-
-When('I fill in the username field with a valid username', () => {
-  LoginPage.fillUsername(getEnv('validUsername'));
-});
-
-When('I fill in the password field with a valid password', () => {
-  LoginPage.fillPassword(getEnv('validPassword'));
 });
 
 When('I fill in the username field with an invalid username', () => {
@@ -33,17 +27,25 @@ When('I click the sign in button', () => {
 });
 
 Then('I should be redirected to the home page', () => {
-  // Assuming the home page URL is stored in the environment variable
+  HomePage.verifyHomePageLoaded();
 });
 
 Then('I should see an error message for invalid credentials', () => {
-  LoginPage.shouldShowErrorMessage('Invalid username or password');
+  LoginPage.shouldShowInvalidCredentialsError();
 });
 
-Then('I should see a required field error for the username', () => {
-  LoginPage.shouldShowErrorMessage('Username is required');
+Then('I should see a required field error for the username at signin in login screen', () => {
+  LoginPage.shouldShowUsernameRequiredError();
 });
 
-Then('I should see a required field error for the password', () => {
-  LoginPage.shouldShowErrorMessage('Password is required');
+Then('I should see a required field error for the password in login screen', () => {
+  LoginPage.shouldShowPasswordRequiredError();
+});
+
+Then('the sign in button should be disabled', () => {
+  LoginPage.shouldShowDisabledSignInButton();
+});
+
+Then('the sign in button should be enabled', () => {
+  LoginPage.shouldShowEnabledSignInButton();
 });

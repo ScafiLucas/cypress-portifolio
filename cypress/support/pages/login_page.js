@@ -19,69 +19,34 @@ class LoginPage {
         BaseTest.type(LoginPageElements.passwordField, password);
     }
 
-    // Toggles the "Remember Me" checkbox
-    static toggleRememberMe() {
-        BaseTest.click(LoginPageElements.rememberMeCheckbox);
-    }
-
     // Clicks the sign in button
     static clickSignIn() {
         BaseTest.click(LoginPageElements.signInButton);
     }
 
-    // Clicks the sign up link
-    static clickSignUp() {
-        BaseTest.click(LoginPageElements.signUpLink);
+    // Checks for required field errors
+    static shouldShowUsernameRequiredError() {
+        BaseTest.elementShouldContainText(LoginPageElements.usernameHelperText, LoginPageElements.TEXTS.usernameRequired);
     }
 
-    // Checks if the logo is visible
-    static shouldShowLogo() {
-        BaseTest.shouldBeVisible(LoginPageElements.logo);
+    static shouldShowPasswordRequiredError() {
+        BaseTest.elementShouldContainText(LoginPageElements.passwordHelperText, LoginPageElements.TEXTS.passwordRequired);
     }
 
-    // Checks if the title is correct
-    static shouldHaveTitle(text) {
-        BaseTest.elementShouldContainText(LoginPageElements.title, text);
+    // Checks if the sign in button is disabled
+    static shouldShowDisabledSignInButton() {
+        BaseTest.shouldBeDisabled(LoginPageElements.signInButton);
     }
 
-    // Checks if an error message exists
-    static shouldShowErrorMessage(text) {
-        BaseTest.elementShouldContainText(LoginPageElements.errorMessage, text);
+    // Checks if the sign in button is enabled
+    static shouldShowEnabledSignInButton() {
+        BaseTest.shouldBeEnabled(LoginPageElements.signInButton);
     }
 
-    // Checks if the username field is visible
-    static shouldShowUsernameField() {
-        BaseTest.shouldBeVisible(LoginPageElements.usernameField);
-    }
-
-    // Checks if the password field is visible
-    static shouldShowPasswordField() {
-        BaseTest.shouldBeVisible(LoginPageElements.passwordField);
-    }
-
-    // Checks if the sign in button is visible
-    static shouldShowSignInButton() {
-        BaseTest.shouldBeVisible(LoginPageElements.signInButton);
-    }
-
-    // Checks if the sign up link is visible
-    static shouldShowSignUpLink() {
-        BaseTest.shouldBeVisible(LoginPageElements.signUpLink);
-    }
-
-    // Checks if the footer is visible
-    static shouldShowFooter() {
-        BaseTest.shouldBeVisible(LoginPageElements.footer);
-    }
-
-    // Checks if the alert error message exists
-    static shouldShowAlertErrorMessage(text) {
-        BaseTest.elementShouldContainText(LoginPageElements.alertErrorMessage, text);
-    }
-
-    // Checks if the alert error message is visible
-    static shouldShowAlertError() {
-        BaseTest.shouldBeVisible(LoginPageElements.alertErrorMessage);
+    // Checks specifically for invalid credentials error
+    static shouldShowInvalidCredentialsError() {
+        BaseTest.shouldBeVisible(LoginPageElements.alertErrorContainer);
+        BaseTest.elementShouldContainText(LoginPageElements.alertErrorMessage, LoginPageElements.TEXTS.invalidCredentialsError);
     }
 }
 
