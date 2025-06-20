@@ -96,6 +96,17 @@ class HomePageElements {
   // Success Messages
   static successMessage = '[data-test="success-message"]';
   static successCloseButton = '[data-test="success-close-button"]';
+
+  // Bank Account Elements
+  static bankNameInput = '[data-test="bankaccount-bankName-input"]';
+  static routingNumberInput = '[data-test="bankaccount-routingNumber-input"]';
+  static accountNumberInput = '[data-test="bankaccount-accountNumber-input"]';
+  static saveBankAccountButton = '[data-test="bankaccount-submit"]';
+  static doneButton = '[data-test="user-onboarding-next"]';
+  static onboardingNextButton = '[data-test="user-onboarding-next"]';
+  static onboardingSuccessMessage = '[data-test="user-onboarding-dialog-title"]';
+  static bankAccountsListItem = '[data-test="bankaccount-list-item"]';
+  static bankAccountName = 'p.MuiTypography-root.MuiTypography-body1.MuiTypography-gutterBottom';
 }
 
 export default HomePageElements;

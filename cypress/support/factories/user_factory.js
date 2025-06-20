@@ -50,6 +50,19 @@ const USERS = {
   }
 };
 
+const BANK_ACCOUNTS = {
+  valid: {
+    bankName: 'Test Bank',
+    routingNumber: '123456789',
+    accountNumber: '1234567890'
+  },
+  another: {
+    bankName: 'Another Bank',
+    routingNumber: '987654321',
+    accountNumber: '0987654321'
+  }
+};
+
 export default class UserFactory {
   static create(user) {
     return cy.request({
@@ -86,5 +99,13 @@ export default class UserFactory {
 
   static getEmptyFieldsUser() {
     return this.getSignupUser('emptyFields');
+  }
+
+  static getBankAccount(type = 'valid') {
+    return BANK_ACCOUNTS[type];
+  }
+
+  static getValidBankAccount() {
+    return this.getBankAccount('valid');
   }
 }

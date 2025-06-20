@@ -167,7 +167,7 @@ class BaseTest {
    * @param {number} [timeout=10000] - Optional timeout in ms.
    */
   static shouldContainText(text, timeout = 10000) {
-    cy.contains(text, { timeout }).should('exist');
+    cy.contains(text, timeout).should('exist');
   }
 
   /**
