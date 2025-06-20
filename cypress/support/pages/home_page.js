@@ -42,10 +42,6 @@ class HomePage {
     BaseTest.click(HomePageElements.doneButton);
   }
 
-  static clickBankAccountsMenuItem() {
-    BaseTest.click(HomePageElements.navDrawerBankAccounts);
-  }
-
   static shouldSeeOnboardingSuccessMessage() {
     BaseTest.shouldBeVisible(HomePageElements.onboardingSuccessMessage);
   }

@@ -1,6 +1,7 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
 import HomePage from '../pages/home_page';
 import LoginPage from '../pages/login_page';
+import AppMenuPage from '../pages/app_menu_page';
 import UserFactory from '../factories/user_factory';
 import BaseTest from '../adapters/test_base';
 
@@ -53,7 +54,7 @@ When('I click on the done button', () => {
 });
 
 When('I click on the bank accounts menu item', () => {
-  HomePage.clickBankAccountsMenuItem();
+  AppMenuPage.clickBankAccountsMenuItem();
 });
 
 Then('I should see the onboarding success message', () => {
